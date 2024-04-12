@@ -34,7 +34,7 @@ public class Feature {
     @NotEmpty(message = "Amount is required")
     @Column(nullable = false)
     @JsonView(Property.class)
-    private String amount;
+    private int amount;
 
     @ManyToOne()
     @JoinColumn(name = "property_id")
