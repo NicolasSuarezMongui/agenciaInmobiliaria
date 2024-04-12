@@ -3,6 +3,7 @@ package com.campuslands.inmobiliaria.repositories.entities;
 import java.util.List;
 
 import com.campuslands.inmobiliaria.repositories.entities.types.RoleType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"properties", "visits"}, allowSetters = true)
 public class Person {
 
     @Id
@@ -40,7 +42,7 @@ public class Person {
     private String name;
 
     @NotEmpty(message = "Last name is required")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "last_name")
     private String lastName;
 
     @NotEmpty(message = "Email is required")

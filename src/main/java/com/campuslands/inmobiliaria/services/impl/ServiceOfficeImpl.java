@@ -16,7 +16,10 @@ import com.campuslands.inmobiliaria.repositories.entities.Office;
 import com.campuslands.inmobiliaria.repositories.entities.Zone;
 import com.campuslands.inmobiliaria.services.ServiceOffice;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ServiceOfficeImpl implements ServiceOffice{
 
     private RepositoryOffice repositoryOffice;

@@ -13,6 +13,8 @@ public interface ServiceProperty {
 
     PropertyDTO findById(Long id) throws BussinesRuleException;
 
+    List<PropertyDTO> findByType(String type);
+
     PropertyDTO update(Long id, PropertyDTO property);
 
     void deleteById(Long id);

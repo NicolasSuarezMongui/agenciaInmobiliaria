@@ -1,5 +1,6 @@
 package com.campuslands.inmobiliaria.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +20,11 @@ import com.campuslands.inmobiliaria.repositories.entities.Property;
 import com.campuslands.inmobiliaria.services.ServiceProperty;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ServicePropertyImpl implements ServiceProperty{
 
     private final RepositoryProperty repositoryProperty;
@@ -77,6 +80,21 @@ public class ServicePropertyImpl implements ServiceProperty{
         if(result.isPresent()){
             repositoryProperty.delete(result.get());
         }
+    }
+
+    @Override
+    public List<PropertyDTO> findByType(String type) {
+        List<Property> properties = (List<Property>) repositoryProperty.findAll();
+        List<Property> result = new ArrayList<Property>();
+        for (Property property : properties) {
+            log.info(property.getOfferType().name());
+            if(property.getOfferType().name().equalsIgnoreCase(type)) {
+                result.add(property);
+            }
+        }
+        return result.stream()
+                    .map(property -> convert.convertPropertyDTO(property))
+                    .toList();
     }
     
 

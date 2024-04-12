@@ -30,7 +30,7 @@ public class PropertyDTOConverter {
             dto.setOffice_zone(property.getOffice().getZone().getName());
         }
         if(property.getStays()!= null) {
-            dto.setNumb_visits(property.getStays().size());
+            dto.setNumb_visits(property.getVisits().size());
         }
         return dto;
 

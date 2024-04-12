@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.campuslands.inmobiliaria.repositories.entities.types.OfferType;
 import com.campuslands.inmobiliaria.repositories.entities.types.PropertyType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.CascadeType;
@@ -52,13 +53,13 @@ public class Property {
     private float area;
 
     @NotEmpty(message = "Offer type is required")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "offer_type")
     @Enumerated(EnumType.ORDINAL)
     @JsonView(Office.class)
     private OfferType offerType;
 
     @NotEmpty(message = "Property type is required")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "property_type")
     @Enumerated(EnumType.ORDINAL)
     @JsonView(Office.class)
     private PropertyType propertyType;
