@@ -118,7 +118,7 @@ public class OfficeController {
         }
 
 
-        response.put("message", "Partner has been successfully deleted");
+        response.put("message", "Partner delete successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     
